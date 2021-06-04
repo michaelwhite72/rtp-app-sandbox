@@ -3,7 +3,7 @@
     <v-app-bar app color="purple" dark>
       <div class="d-flex align-center">
         <h1>
-          REAL-TIME PAYMENTS
+          FASTERPAY
         </h1>
       </div>
 
@@ -45,6 +45,42 @@
     <v-main>
       <router-view />
     </v-main>
+    <!-- <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-sm-6 mb-4">
+          <h3 class="my-sm-3 mb-2">
+            <span class="fa mr-2 fa-mobile"></span> Mobile Apps
+          </h3>
+          <p class="mb-sm-4">
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.
+          </p>
+        </div>
+        <div class="col-lg-3 col-sm-6 mb-4">
+          <h3 class="my-sm-3 mb-2">
+            <span class="fa mr-2 fa-shield"></span> Security Tips
+          </h3>
+          <p class="mb-sm-4">
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.
+          </p>
+        </div>
+        <div class="col-lg-3 col-sm-6 mb-4">
+          <h3 class="my-sm-3 mb-2">
+            <span class="fa mr-2 fa-globe"></span> Various Branches
+          </h3>
+          <p class="mb-sm-4">
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.
+          </p>
+        </div>
+        <div class="col-lg-3 col-sm-6 mb-4">
+          <h3 class="my-sm-3 mb-2">
+            <span class="fa mr-2 fa-phone"></span> 24/7 Support
+          </h3>
+          <p class="mb-4">
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.
+          </p>
+        </div>
+      </div>
+    </div> -->
     <v-footer color="purple" padless>
       <v-row justify="center" no-gutters>
         <v-btn @click="homePage()" color="white" text rounded class="my-2">

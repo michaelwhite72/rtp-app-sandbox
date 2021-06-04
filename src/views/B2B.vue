@@ -144,6 +144,8 @@
         </v-dialog>
       </v-col>
     </v-row>
+    <!-- End POP-UP -->
+
   </div>
 </template>
 
