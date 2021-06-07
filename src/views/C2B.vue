@@ -78,7 +78,7 @@
       <v-col cols="auto">
         <v-dialog transition="dialog-bottom-transition" max-width="600">
           <template v-slot:activator="{ on, attrs }">
-            <v-btn color="primary" v-bind="attrs" v-on="on">Show Receipt</v-btn>
+            <v-btn  v-on:click="showReceipt" color="primary" v-bind="attrs" v-on="on">Show Receipt</v-btn>
             <v-btn v-on:click="newPayment()" depressed color="grey">
               Clear / New
             </v-btn>
@@ -99,15 +99,17 @@
                   <p>{{ executionDate }}</p>
                   <br />
                   <br />
-                  <h2>Soda Total: $ </h2>
-                  <p>qty: {{ soda.val }}</p> <p>Price: $2.75</p>
+                  <h2>Soda Total: $ {{(sodaTotal.toFixed(2))}}</h2>
+                  <p>qty: {{ soda.val }}</p> <p>Price: $2.50 ea</p>
                   <br />
-                  <h2>Lobster Rolls Total: $</h2>
-                  <p>qty: {{ lobsterRoll.val }}</p> <p>Price: $8.95</p>
+                  <h2>Lobster Rolls Total: $ {{(lobsterTotal.toFixed(2))}} </h2>
+                  <p>qty: {{ lobsterRoll.val }}</p> <p>Price: $9.25 ea</p>
                   <br />
-                  <h2>Fries Total: $ </h2>
-                  <p>qty: {{ fries.val }}</p> <p>Price: $3.40</p>
+                  <h2>Fries Total: $ {{(friesTotal.toFixed(2))}}</h2>
+                  <p>qty: {{ fries.val }}</p> <p>Price: $3.50 ea</p>
                   <br />
+                  <br />
+                  <h1> Total Sale: $ {{(salesTotal.toFixed(2))}}</h1>
                 </div>
               </v-card-text>
               <!-- POP-UP BUTTONS -->
@@ -120,7 +122,7 @@
                   >CANCEL</v-btn
                 >
                 <v-btn
-                  v-on:click="createPayment()"
+                  v-on:click="makePayment()"
                   @click="dialog.value = false"
                   depressed
                   color="green"
@@ -167,8 +169,10 @@ export default {
       fries: { label: 'Fries', val: 0, color: 'orange' },
       customerID: "",
       executionDate:"",
-    
-    
+      sodaTotal: 0,
+      lobsterTotal: "",
+      friesTotal: "",
+      salesTotal:""
     };
   },
   created: function() {
@@ -179,13 +183,23 @@ export default {
       this.$router.go();
     },
     async showReceipt() {
-      console.log(this.paymentInformationId);
-      console.log(this.soda.val);
-      console.log(this.lobsterRoll.val);
-      console.log(this.soda.val);
-      console.log(this.customerID);
+      // console.log(this.paymentInformationId);
+      // console.log(this.soda.val);
+      // console.log(this.lobsterRoll.val);
+      // console.log(this.soda.val);
+      // console.log(this.customerID);
+      this.sodaTotal = (this.soda.val * 2.50);
+      this.lobsterTotal = (this.soda.val * 9.25);
+      this.friesTotal = (this.soda.val * 3.50);
+      this.salesTotal = (this.sodaTotal + this.lobsterTotal + this.friesTotal);
+    },
 
+    async makePayment() {
       // console.log(this.token);
+      console.log(this.paymentInformationId);
+      console.log(this.salesTotal);
+      console.log("account number: 1122334455");
+      console.log(this.executionDate);
       // var data = {
       //   token: this.token,
       //   debtor: this.PayeeName,
@@ -208,5 +222,6 @@ export default {
       //   });
     },
   },
+
 };
 </script>

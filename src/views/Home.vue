@@ -3,7 +3,7 @@
     <h1>{{ message }}</h1>
   </div> -->
   <!-- services -->
-  <section class="services py-5">
+  <!-- <section class="services py-5"> -->
     <div class="container py-md-5 py-sm-3">
       <h3 class="heading mb-5">Services <strong> we provide </strong></h3>
       <div class="row">
