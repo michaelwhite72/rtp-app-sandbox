@@ -3,18 +3,12 @@
     <v-app-bar app color="purple" dark>
       <div class="d-flex align-center">
         <h1>
-          LOBSTER SHACK
+          FASTER PAY
         </h1>
-        <p>( from Faster Pay )</p>
       </div>
 
       <v-spacer></v-spacer>
-      <!-- <v-list>
-        <router-link to="/" color="white">home</router-link>
-      </v-list>
-      <li class="list-inline-item">
-        <router-link to="/" color="white">home</router-link>
-      </li> -->
+
       <v-btn v-on:click="homePage()" color="white" text rounded class="my-2">
         Home
       </v-btn>
@@ -37,11 +31,11 @@
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-img
+    <!-- <v-img
       lazy-src="./images/large-Payments_Banner-–-2.png"
       max-height="300"
       src="./images/large-Payments_Banner-–-2.png"
-    ></v-img>
+    ></v-img> -->
 
     <v-main>
       <router-view />

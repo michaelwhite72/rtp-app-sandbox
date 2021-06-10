@@ -1,9 +1,47 @@
 <template>
-  <!-- <div class="home">
+  <div id="app">
+    <!-- <div class="home">
     <h1>{{ message }}</h1>
   </div> -->
-  <!-- services -->
-  <!-- <section class="services py-5"> -->
+    <!-- services -->
+    <!-- <section class="services py-5"> -->
+    <v-app-bar app color="purple" dark>
+      <div class="d-flex align-center">
+        <h1>
+          FASTER PAY
+        </h1>
+      </div>
+
+      <v-spacer></v-spacer>
+
+      <v-btn v-on:click="homePage()" color="white" text rounded class="my-2">
+        Home
+      </v-btn>
+
+      <v-btn
+        v-on:click="managePayments()"
+        color="white"
+        text
+        rounded
+        class="my-2"
+      >
+        Manage Payments
+      </v-btn>
+
+      <v-btn
+        v-on:click="customerPage()"
+        color="white"
+        text
+        rounded
+        class="my-2"
+      >
+        Customer Pay
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+    </v-app-bar>
     <div class="container py-md-5 py-sm-3">
       <h1>FASTER PAY</h1>
       <h3 class="heading mb-5">Services <strong> we provide </strong></h3>
@@ -126,9 +164,10 @@
         </div>
       </div>
     </div> -->
-  </section>
+    <!-- </section> -->
 
-  <!-- //other services -->
+    <!-- //other services -->
+  </div>
 </template>
 
 <style></style>
@@ -141,6 +180,15 @@ export default {
     };
   },
   created: function() {},
-  methods: {},
+  methods: {
+    homePage() {
+      this.$router.push({ path: "/" });
+      console.log("home");
+    },
+    managePayments() {
+      this.$router.push({ path: "ReviewPaymentRequests" });
+      console.log("ReviewPaymentRequests");
+    },
+  },
 };
 </script>
