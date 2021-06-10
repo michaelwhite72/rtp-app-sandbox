@@ -8,7 +8,7 @@
     <v-container fluid>
       <v-row align="center" justify="center">
         <!-- Autofill Transaction ID -->
-        <v-col class="d-flex" cols="2" sm="4">
+        <v-col class="d-flex" cols="4" sm="3">
           <v-textarea
             outlined
             rows="1"
@@ -19,7 +19,7 @@
           ></v-textarea>
         </v-col>
         <!-- Payee Name -->
-        <v-col class="d-flex" cols="2" sm="4">
+        <v-col class="d-flex" cols="4" sm="3">
           <v-text-field
             v-model="customerID"
             label="Customer ID Number"
@@ -27,7 +27,7 @@
           ></v-text-field>
         </v-col>
         <!-- Account Number -->
-        <v-col class="d-flex" cols="2" sm="4">
+        <v-col class="d-flex" cols="4" sm="3">
           <v-textarea
             rows="1"
             name="executionDate"
@@ -37,6 +37,15 @@
             outlined
           ></v-textarea>
         </v-col>
+        <v-col class="d-flex" cols="5" sm="2">
+          <v-btn depressed color="blue">
+          Accept
+          </v-btn>
+          <v-btn depressed color="red">
+          decline
+          </v-btn>
+        </v-col>
+
       </v-row>
     </v-container>
     <!-- SECOND ROW OF ENTRIES -->
@@ -45,27 +54,27 @@
         <!-- Sam Adams-->
         <v-col class="d-flex" cols="2" sm="4">
           <v-slider
-            v-model="soda.val"
-            :label="soda.label"
-            :thumb-color="soda.color"
+            v-model="tuna.val"
+            :label="tuna.label"
+            :thumb-color="tuna.color"
             thumb-label="always"
           ></v-slider>
         </v-col>
         <!-- Lobster Roll -->
         <v-col class="d-flex" cols="2" sm="4">
           <v-slider
-            v-model="lobsterRoll .val"
-            :label="lobsterRoll.label"
-            :thumb-color="lobsterRoll.color"
+            v-model="lobster .val"
+            :label="lobster.label"
+            :thumb-color="lobster.color"
             thumb-label="always"
           ></v-slider>
         </v-col>
-        <!-- Waffle Fries-->
+        <!-- Salmon -->
         <v-col class="d-flex" cols="2" sm="4">
           <v-slider
-            v-model="fries.val"
-            :label="fries.label"
-            :thumb-color="fries.color"
+            v-model="salmon.val"
+            :label="salmon.label"
+            :thumb-color="salmon.color"
             thumb-label="always"
           ></v-slider>
         </v-col>
@@ -99,14 +108,14 @@
                   <p>{{ executionDate }}</p>
                   <br />
                   <br />
-                  <h2>Soda Total: $ {{(sodaTotal.toFixed(2))}}</h2>
-                  <p>qty: {{ soda.val }}</p> <p>Price: $2.50 ea</p>
+                  <h2>Tuna Total: $ {{(tunaTotal.toFixed(2))}}</h2>
+                  <p>qty: {{ tuna.val }}</p> <p>Price: $2.50 ea</p>
                   <br />
-                  <h2>Lobster Rolls Total: $ {{(lobsterTotal.toFixed(2))}} </h2>
-                  <p>qty: {{ lobsterRoll.val }}</p> <p>Price: $9.25 ea</p>
+                  <h2>Lobster Total: $ {{(lobsterTotal.toFixed(2))}} </h2>
+                  <p>qty: {{ lobster.val }}</p> <p>Price: $9.25 ea</p>
                   <br />
-                  <h2>Fries Total: $ {{(friesTotal.toFixed(2))}}</h2>
-                  <p>qty: {{ fries.val }}</p> <p>Price: $3.50 ea</p>
+                  <h2>Salmon Total: $ {{(salmonTotal.toFixed(2))}}</h2>
+                  <p>qty: {{ salmon.val }}</p> <p>Price: $3.50 ea</p>
                   <br />
                   <br />
                   <h1> Total Sale: $ {{(salesTotal.toFixed(2))}}</h1>
@@ -161,18 +170,18 @@ import moment from "moment";
 export default {
   data: function() {
     return {
-      message: "Welcome to C2B PAGE!",
+      message: "Welcome to Send Request for Payment!",
       today: moment().format("YYYY-MM-DD"),
       paymentInformationId: Math.floor(Math.random() * 100000000000),
-      soda: { label: 'Soda', val: 0, color: 'blue' },
-      lobsterRoll: { label: 'Lobster Roll', val: 0, color: 'red' },
-      fries: { label: 'Fries', val: 0, color: 'orange' },
+      tuna: { label: 'Tuna', val: 0, color: 'blue' },
+      lobster: { label: 'Lobster', val: 0, color: 'red' },
+      salmon: { label: 'Salmon', val: 0, color: 'orange' },
       customerID: "",
       executionDate:"",
-      sodaTotal: 0,
+      tunaTotal: "",
       lobsterTotal: "",
-      friesTotal: "",
-      salesTotal:""
+      salmonTotal: "",
+      salesTotal: "",
     };
   },
   created: function() {
@@ -184,14 +193,14 @@ export default {
     },
     async showReceipt() {
       // console.log(this.paymentInformationId);
-      // console.log(this.soda.val);
-      // console.log(this.lobsterRoll.val);
-      // console.log(this.soda.val);
+      // console.log(this.tuna.val);
+      // console.log(this.lobster.val);
+      // console.log(this.tuna.val);
       // console.log(this.customerID);
-      this.sodaTotal = (this.soda.val * 2.50);
-      this.lobsterTotal = (this.soda.val * 9.25);
-      this.friesTotal = (this.soda.val * 3.50);
-      this.salesTotal = (this.sodaTotal + this.lobsterTotal + this.friesTotal);
+      this.tunaTotal = (this.tuna.val * 2.50);
+      this.lobsterTotal = (this.lobster.val * 9.25);
+      this.salmonTotal = (this.salmon.val * 3.50);
+      this.salesTotal = (this.tunaTotal + this.lobsterTotal + this.salmonTotal);
     },
 
     async makePayment() {

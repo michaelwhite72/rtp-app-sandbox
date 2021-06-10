@@ -5,6 +5,7 @@
   <!-- services -->
   <!-- <section class="services py-5"> -->
     <div class="container py-md-5 py-sm-3">
+      <h1>FASTER PAY</h1>
       <h3 class="heading mb-5">Services <strong> we provide </strong></h3>
       <div class="row">
         <div class="col-lg-4">

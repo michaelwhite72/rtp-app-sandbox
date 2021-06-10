@@ -145,7 +145,6 @@
       </v-col>
     </v-row>
     <!-- End POP-UP -->
-
   </div>
 </template>
 
@@ -161,13 +160,13 @@ export default {
       today: moment().format("YYYY-MM-DD"),
       paymentInformationId: Math.floor(Math.random() * 100000000000),
       names: [
-        "Acme Systems",
-        "Ace Services",
-        "Star Cleaning",
+        "Hill Country Distribution",
+        "Maine Seafood, Inc",
+        "Star Cleaning Services",
         "Gearshaft Automotive",
       ],
       payeeName: "",
-      accounts: ["1309785469", "3711354879", "5261260818", "1309785469"],
+      accounts: ["1309785469", "3711354879", "5261260818", "89065478921"],
       accountNumber: "",
       denomination: ["USD", "CAD", "EUR", "Mex$"],
       executionDate: "",

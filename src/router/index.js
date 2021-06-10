@@ -3,6 +3,8 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import B2B from '../views/B2B.vue';
 import C2B from '../views/C2B.vue';
+import SendPaymentRequest from '../views/SendPaymentRequest.vue';
+import ReviewPaymentRequests from '../views/ReviewPaymentRequests.vue';
 
 Vue.use(VueRouter);
 
@@ -21,6 +23,16 @@ const routes = [
     path: '/C2B',
     name: 'C2B',
     component: C2B
+  },
+  {
+    path: '/SendPaymentRequest',
+    name: 'SendPaymentRequest',
+    component: SendPaymentRequest
+  },
+  {
+    path: '/ReviewPaymentRequests',
+    name: 'ReviewPaymentRequests',
+    component: ReviewPaymentRequests
   },
   // {
   //   path: '/about',

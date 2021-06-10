@@ -3,8 +3,9 @@
     <v-app-bar app color="purple" dark>
       <div class="d-flex align-center">
         <h1>
-          FASTERPAY
+          LOBSTER SHACK
         </h1>
+        <p>( from Faster Pay )</p>
       </div>
 
       <v-spacer></v-spacer>
