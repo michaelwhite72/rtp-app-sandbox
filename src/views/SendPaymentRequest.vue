@@ -1,5 +1,53 @@
 <template>
   <div id="app">
+    <v-app-bar app color="blue">
+      <div class="d-flex align-center">
+        <h1>
+          MAINE SEAFOOD DISTRIBUTORS
+        </h1>
+      </div>
+
+      <v-spacer></v-spacer>
+      <!-- <v-list>
+        <router-link to="/" color="white">home</router-link>
+      </v-list>
+      <li class="list-inline-item">
+        <router-link to="/" color="white">home</router-link>
+      </li> -->
+      <v-btn v-on:click="homePage()" color="white" text rounded class="my-2">
+        Home
+      </v-btn>
+
+      <v-btn
+        v-on:click="managePayments()"
+        color="white"
+        text
+        rounded
+        class="my-2"
+      >
+        Manage Payments
+      </v-btn>
+
+      <v-btn
+        v-on:click="customerPage()"
+        color="white"
+        text
+        rounded
+        class="my-2"
+      >
+        Customer Pay
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+    </v-app-bar>
+
+    <v-img
+      lazy-src="../images/lobsters.jpeg"
+      max-height="300"
+      src="../images/seafood.jpeg"
+    ></v-img>
     <div class="home">
       <h1>{{ message }}</h1>
     </div>
@@ -37,15 +85,14 @@
             outlined
           ></v-textarea>
         </v-col>
-        <v-col class="d-flex" cols="5" sm="2">
+        <!-- <v-col class="d-flex" cols="5" sm="2">
           <v-btn depressed color="blue">
-          Accept
+            Accept
           </v-btn>
           <v-btn depressed color="red">
-          decline
+            decline
           </v-btn>
-        </v-col>
-
+        </v-col> -->
       </v-row>
     </v-container>
     <!-- SECOND ROW OF ENTRIES -->
@@ -63,92 +110,98 @@
         <!-- Lobster Roll -->
         <v-col class="d-flex" cols="2" sm="4">
           <v-slider
-            v-model="lobster .val"
+            v-model="lobster.val"
             :label="lobster.label"
             :thumb-color="lobster.color"
             thumb-label="always"
           ></v-slider>
         </v-col>
-        <!-- Salmon -->
+        <!-- crab -->
         <v-col class="d-flex" cols="2" sm="4">
           <v-slider
-            v-model="salmon.val"
-            :label="salmon.label"
-            :thumb-color="salmon.color"
+            v-model="crab.val"
+            :label="crab.label"
+            :thumb-color="crab.color"
             thumb-label="always"
           ></v-slider>
         </v-col>
-        <!-- <v-btn v-on:click="showReceipt()" depressed color="blue">
+        <!-- <v-btn v-on:click="showPaymentRequest()" depressed color="blue">
           Review Receipt
         </v-btn> -->
 
-    <!-- START POP-UP -->
-    <v-row justify="space-around">
-      <v-col cols="auto">
-        <v-dialog transition="dialog-bottom-transition" max-width="600">
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn  v-on:click="showReceipt" color="primary" v-bind="attrs" v-on="on">Show Receipt</v-btn>
-            <v-btn v-on:click="newPayment()" depressed color="grey">
-              Clear / New
-            </v-btn>
-          </template>
-          <template v-slot:default="dialog">
-            <!-- VERIFICATION POP-UP -->
-            <v-card>
-              <v-toolbar color="pink accent-1" >
-                <h2>TransactionID: {{ paymentInformationId }}</h2>
-              </v-toolbar>
-              <v-card-text>
-                <div>
-                  <br />
-                  <h2>Customer ID:</h2>
-                  <p>{{ customerID }}</p>
-                  <br />
-                  <h2>Date:</h2>
-                  <p>{{ executionDate }}</p>
-                  <br />
-                  <br />
-                  <h2>Tuna Total: $ {{(tunaTotal.toFixed(2))}}</h2>
-                  <p>qty: {{ tuna.val }}</p> <p>Price: $2.50 ea</p>
-                  <br />
-                  <h2>Lobster Total: $ {{(lobsterTotal.toFixed(2))}} </h2>
-                  <p>qty: {{ lobster.val }}</p> <p>Price: $9.25 ea</p>
-                  <br />
-                  <h2>Salmon Total: $ {{(salmonTotal.toFixed(2))}}</h2>
-                  <p>qty: {{ salmon.val }}</p> <p>Price: $3.50 ea</p>
-                  <br />
-                  <br />
-                  <h1> Total Sale: $ {{(salesTotal.toFixed(2))}}</h1>
-                </div>
-              </v-card-text>
-              <!-- POP-UP BUTTONS -->
-              <v-card-actions class="justify-end">
+        <!-- START POP-UP -->
+        <v-row justify="space-around">
+          <v-col cols="auto">
+            <v-dialog transition="dialog-bottom-transition" max-width="600">
+              <template v-slot:activator="{ on, attrs }">
                 <v-btn
-                  text
-                  @click="dialog.value = false"
-                  depressed
-                  color="error"
-                  >CANCEL</v-btn
+                  v-on:click="showPaymentRequest"
+                  color="primary"
+                  v-bind="attrs"
+                  v-on="on"
+                  >Show Payment Request</v-btn
                 >
-                <v-btn
-                  v-on:click="makePayment()"
-                  @click="dialog.value = false"
-                  depressed
-                  color="green"
-                >
-                  Make Payment
+                <v-btn v-on:click="newPayment()" depressed color="grey">
+                  Clear / New
                 </v-btn>
-              </v-card-actions>
-            </v-card>
-            <!-- END POP-UP VERIFICATION -->
-          </template>
-        </v-dialog>
-      </v-col>
-    </v-row>
-    <!-- End POP-UP -->
-
-
-
+              </template>
+              <template v-slot:default="dialog">
+                <!-- VERIFICATION POP-UP -->
+                <v-card>
+                  <v-toolbar color="pink accent-1">
+                    <h2>TransactionID: {{ paymentInformationId }}</h2>
+                  </v-toolbar>
+                  <v-card-text>
+                    <div>
+                      <br />
+                      <h2>Customer ID:</h2>
+                      <p>{{ customerID }}</p>
+                      <br />
+                      <h2>Date:</h2>
+                      <p>{{ executionDate }}</p>
+                      <br />
+                      <br />
+                      <h2>Tuna Total: $ {{ tunaTotal.toFixed(2) }}</h2>
+                      <p>qty: {{ tuna.val }}</p>
+                      <p>Price: $4 per pound</p>
+                      <br />
+                      <h2>Lobster Total: $ {{ lobsterTotal.toFixed(2) }}</h2>
+                      <p>qty: {{ lobster.val }}</p>
+                      <p>Price: $3 per pound</p>
+                      <br />
+                      <h2>Crab Total: $ {{ crabTotal.toFixed(2) }}</h2>
+                      <p>qty: {{ crab.val }}</p>
+                      <p>Price: $5 per pound</p>
+                      <br />
+                      <br />
+                      <h1>Total Sale: $ {{ salesTotal.toFixed(2) }}</h1>
+                    </div>
+                  </v-card-text>
+                  <!-- POP-UP BUTTONS -->
+                  <v-card-actions class="justify-end">
+                    <v-btn
+                      text
+                      @click="dialog.value = false"
+                      depressed
+                      color="error"
+                      >CANCEL</v-btn
+                    >
+                    <v-btn
+                      v-on:click="makePayment()"
+                      @click="dialog.value = false"
+                      depressed
+                      color="green"
+                    >
+                      Make Payment
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+                <!-- END POP-UP VERIFICATION -->
+              </template>
+            </v-dialog>
+          </v-col>
+        </v-row>
+        <!-- End POP-UP -->
       </v-row>
     </v-container>
     <!-- <v-col class="d-flex" cols="3" sm="6">
@@ -157,8 +210,8 @@
         label="Customer ID Number"
         outlined
       ></v-text-field> -->
-
-    </v-col>
+    <!-- 
+    </v-col> -->
   </div>
 </template>
 
@@ -173,14 +226,14 @@ export default {
       message: "Welcome to Send Request for Payment!",
       today: moment().format("YYYY-MM-DD"),
       paymentInformationId: Math.floor(Math.random() * 100000000000),
-      tuna: { label: 'Tuna', val: 0, color: 'blue' },
-      lobster: { label: 'Lobster', val: 0, color: 'red' },
-      salmon: { label: 'Salmon', val: 0, color: 'orange' },
+      tuna: { label: "Tuna", val: 0, color: "blue" },
+      lobster: { label: "Lobster", val: 0, color: "red" },
+      crab: { label: "Crab", val: 0, color: "orange" },
       customerID: "",
-      executionDate:"",
+      executionDate: "",
       tunaTotal: "",
       lobsterTotal: "",
-      salmonTotal: "",
+      crabTotal: "",
       salesTotal: "",
     };
   },
@@ -191,16 +244,16 @@ export default {
     newPayment() {
       this.$router.go();
     },
-    async showReceipt() {
+    async showPaymentRequest() {
       // console.log(this.paymentInformationId);
       // console.log(this.tuna.val);
       // console.log(this.lobster.val);
       // console.log(this.tuna.val);
       // console.log(this.customerID);
-      this.tunaTotal = (this.tuna.val * 2.50);
-      this.lobsterTotal = (this.lobster.val * 9.25);
-      this.salmonTotal = (this.salmon.val * 3.50);
-      this.salesTotal = (this.tunaTotal + this.lobsterTotal + this.salmonTotal);
+      this.tunaTotal = this.tuna.val * 4;
+      this.lobsterTotal = this.lobster.val * 3;
+      this.crabTotal = this.crab.val * 5;
+      this.salesTotal = this.tunaTotal + this.lobsterTotal + this.crabTotal;
     },
 
     async makePayment() {
@@ -231,6 +284,5 @@ export default {
       //   });
     },
   },
-
 };
 </script>
