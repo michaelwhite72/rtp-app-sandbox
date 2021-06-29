@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <!-- APP BAR -->
     <v-app-bar app color="purple" dark>
       <div class="d-flex align-center">
         <h1>
@@ -8,7 +9,7 @@
       </div>
 
       <v-spacer></v-spacer>
-
+      <!-- Routing Buttons -->
       <v-btn v-on:click="homePage()" color="white" text rounded class="my-2">
         Home
       </v-btn>
@@ -26,7 +27,7 @@
       >
         Customer Pay
       </v-btn>
-
+      <!-- End Buttons  -->
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
@@ -35,7 +36,7 @@
     <v-main>
       <router-view />
     </v-main>
-
+    <!-- Footer -->
     <v-footer color="purple" padless>
       <v-row justify="center" no-gutters>
         <v-btn color="white" text rounded class="my-2">

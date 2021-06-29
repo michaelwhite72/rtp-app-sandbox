@@ -8,12 +8,8 @@
       </div>
 
       <v-spacer></v-spacer>
-      <!-- <v-list>
-        <router-link to="/" color="white">home</router-link>
-      </v-list>
-      <li class="list-inline-item">
-        <router-link to="/" color="white">home</router-link>
-      </li> -->
+
+      <!-- ROUTING BUTTONS -->
       <v-btn v-on:click="homePage()" color="white" text rounded class="my-2">
         Home
       </v-btn>
@@ -35,17 +31,24 @@
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
+      <!-- END ROUTING BUTTONS -->
     </v-app-bar>
 
+    <!-- MAINE SEAFOOD IMAGE -->
     <v-img
       lazy-src="../images/lobsters.jpeg"
       max-height="300"
       src="../images/seafood.jpeg"
     ></v-img>
+    <!-- END MAINE SEAFOOD IMAGE -->
+
+    <!-- WELCOME MESSAGE -->
     <div class="home">
       <h1>{{ message }}</h1>
     </div>
+    <!-- END WELCOME MESSAGE -->
 
+    <!-- ADD BREAK -->
     <v-container fluid> </v-container>
 
     <!-- FIRST ROW OF ENTRIES -->
@@ -62,6 +65,7 @@
             readonly
           ></v-textarea>
         </v-col>
+
         <!-- Payee Name -->
         <v-col class="d-flex" cols="4" sm="3">
           <v-select
@@ -71,7 +75,9 @@
             outlined
           ></v-select>
         </v-col>
-        <!-- Account Number -->
+        <!-- END PAYEE NAME -->
+
+        <!-- DATE TO BE EXECUTED -->
         <v-col class="d-flex" cols="4" sm="3">
           <v-textarea
             rows="1"
@@ -82,20 +88,14 @@
             outlined
           ></v-textarea>
         </v-col>
-        <!-- <v-col class="d-flex" cols="5" sm="2">
-          <v-btn depressed color="blue">
-            Accept
-          </v-btn>
-          <v-btn depressed color="red">
-            decline
-          </v-btn>
-        </v-col> -->
+        <!-- END EXECUTION DATE -->
       </v-row>
     </v-container>
+
     <!-- SECOND ROW OF ENTRIES -->
     <v-container fluid>
       <v-row align="center" justify="center">
-        <!-- Sam Adams-->
+        <!-- TUNA-->
         <v-col class="d-flex" cols="2" sm="4">
           <v-slider
             v-model="tuna.val"
@@ -104,16 +104,20 @@
             thumb-label="always"
           ></v-slider>
         </v-col>
-        <!-- Lobster Roll -->
+        <!-- END TUNA -->
+
+        <!-- LOBSTER -->
         <v-col class="d-flex" cols="2" sm="4">
           <v-slider
             v-model="lobster.val"
             :label="lobster.label"
             :thumb-color="lobster.color"
             thumb-label="always"
-          ></v-slider>
-        </v-col>
-        <!-- crab -->
+          ></v-slider> </v-col
+        >'
+        <!-- END LOBSTER -->
+
+        <!-- CRAB -->
         <v-col class="d-flex" cols="2" sm="4">
           <v-slider
             v-model="crab.val"
@@ -122,15 +126,14 @@
             thumb-label="always"
           ></v-slider>
         </v-col>
-        <!-- <v-btn v-on:click="showPaymentRequest()" depressed color="blue">
-          Review Receipt
-        </v-btn> -->
+        <!-- END CRAB -->
 
         <!-- START POP-UP -->
         <v-row justify="space-around">
           <v-col cols="auto">
             <v-dialog transition="dialog-bottom-transition" max-width="600">
               <template v-slot:activator="{ on, attrs }">
+                <!-- SHOW PAYMENT REQUEST BUTTON -->
                 <v-btn
                   v-on:click="showPaymentRequest"
                   color="primary"
@@ -138,9 +141,13 @@
                   v-on="on"
                   >Show Payment Request</v-btn
                 >
+                <!-- END SHOW PAYMENT REQUEST -->
+
+                <!-- CLEAR/NEW BUTTON -->
                 <v-btn v-on:click="newPayment()" depressed color="grey">
                   Clear / New
                 </v-btn>
+                <!-- END CLEAR / NEW BUTTON -->
               </template>
               <template v-slot:default="dialog">
                 <!-- VERIFICATION POP-UP -->
@@ -203,14 +210,6 @@
         <!-- End POP-UP -->
       </v-row>
     </v-container>
-    <!-- <v-col class="d-flex" cols="3" sm="6">
-      <v-text-field
-        name="CustomerID"
-        label="Customer ID Number"
-        outlined
-      ></v-text-field> -->
-    <!-- 
-    </v-col> -->
   </div>
 </template>
 
@@ -258,11 +257,6 @@ export default {
       this.$router.go();
     },
     async showPaymentRequest() {
-      // console.log(this.paymentInformationId);
-      // console.log(this.tuna.val);
-      // console.log(this.lobster.val);
-      // console.log(this.tuna.val);
-      // console.log(this.customerID);
       this.tunaTotal = this.tuna.val * 4;
       this.lobsterTotal = this.lobster.val * 3;
       this.crabTotal = this.crab.val * 5;

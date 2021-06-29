@@ -7,13 +7,9 @@
         </h1>
       </div>
 
+      <!-- ROUTING BUTTONS INDEX -->
       <v-spacer></v-spacer>
-      <!-- <v-list>
-        <router-link to="/" color="white">home</router-link>
-      </v-list>
-      <li class="list-inline-item">
-        <router-link to="/" color="white">home</router-link>
-      </li> -->
+
       <v-btn v-on:click="homePage()" color="white" text rounded class="my-2">
         Home
       </v-btn>
@@ -35,13 +31,16 @@
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
+      <!-- END BUTTONS -->
     </v-app-bar>
 
+    <!-- LOBSTER SHACK IMAGE -->
     <v-img
       lazy-src="../images/lobsters.jpeg"
       max-height="300"
       src="../images/lobsters.jpeg"
     ></v-img>
+    <!-- LOBSTER SHACK IMAGE END -->
 
     <div class="home">
       <h1>{{ message }}</h1>
@@ -49,10 +48,10 @@
 
     <v-container fluid> </v-container>
 
-    <!-- Creditor-->
+    <!-- PAYMENT REQUEST INFO-->
     <v-container fluid>
       <v-row align="center" justify="center">
-        <!-- Autofill Transaction ID -->
+        <!-- Transaction ID -- provided by GPP -->
         <v-col class="d-flex" cols="4" sm="3">
           <v-textarea
             outlined
@@ -63,7 +62,8 @@
             readonly
           ></v-textarea>
         </v-col>
-        <!-- Payee Name -->
+
+        <!-- Creditor Name -- from GPP -->
         <v-col class="d-flex" cols="4" sm="3">
           <v-text-field
             v-model="creditor"
@@ -71,7 +71,8 @@
             outlined
           ></v-text-field>
         </v-col>
-        <!-- Amount -->
+
+        <!-- Amount -- suppplied by GPP-->
         <v-col class="d-flex" cols="4" sm="3">
           <v-text-field
             v-model="amount"
@@ -79,6 +80,7 @@
             outlined
           ></v-text-field>
         </v-col>
+
         <!-- ACCEPT / DECLINE BUTTONS -->
         <v-col class="d-flex" cols="5" sm="2">
           <v-btn depressed color="green">
@@ -88,6 +90,7 @@
             DECLINE
           </v-btn>
         </v-col>
+        <!-- accept / decline end -->
       </v-row>
     </v-container>
   </div>
@@ -119,9 +122,6 @@ export default {
     requestPayment() {
       this.$router.push({ path: "RequestPayment" });
       console.log("RequestPayment");
-    },
-    newPayment() {
-      this.$router.go();
     },
 
     async makePayment() {
