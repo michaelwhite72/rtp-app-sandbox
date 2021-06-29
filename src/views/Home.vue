@@ -14,13 +14,13 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn v-on:click="homePage()" color="white" text rounded class="my-2">
+      <v-btn  color="white" text rounded class="my-2">
         Home
       </v-btn>
 
       <v-btn
         v-on:click="managePayments()"
-        color="white"
+        color="red"
         text
         rounded
         class="my-2"
@@ -29,13 +29,13 @@
       </v-btn>
 
       <v-btn
-        v-on:click="customerPage()"
-        color="white"
+        v-on:click="requestPayment()"
+        color="green"
         text
         rounded
         class="my-2"
       >
-        Customer Pay
+        Request Payment
       </v-btn>
 
       <v-btn icon>
@@ -118,55 +118,7 @@
         </div>
       </div>
     </div>
-    <!-- //services -->
-
-    <!-- OTHER SERVICES -->
-    <!-- <div class="container py-md-5 py-3">
-      <h2 class="heading mb-5">
-        A wide range<strong> of Banking services </strong>
-      </h2>
-      <div class="row">
-        <div class="col-lg-4 col-sm-6 mb-5">
-          <div class="grid">
-            <img src="../images/banner2.jpg" alt="" class="img-fluid" />
-            <div class="info p-4">
-              <h4 class="">Payment Request</h4>
-              <p class="my-3">
-                Initiate market specific real-time payment requests for USD
-                real-time schemes....
-              </p>
-              <a href="UCRequestForPaymentIncoming.html">More </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 mb-5">
-          <div class="grid">
-            <img src="../images/banner1.jpg" alt="" class="img-fluid" />
-            <div class="info p-4">
-              <h4 class="">Pending Payment Request</h4>
-              <p class="my-3">All the pending Request for Payment ....</p>
-              <a href="PendingPaymentRequest.html">More </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 mb-5">
-          <div class="grid">
-            <img src="../images/banner2.jpg" alt="" class="img-fluid" />
-            <div class="info p-4">
-              <h4 class="">Loan Management</h4>
-              <p class="my-3">
-                Onec consequat sapien ut amet leo cursus rhoncus. Nullam dui
-                mi....
-              </p>
-              <a href="#">Read More </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- </section> -->
-
-    <!-- //other services -->
+   
   </div>
 </template>
 
@@ -181,13 +133,14 @@ export default {
   },
   created: function() {},
   methods: {
-    homePage() {
-      this.$router.push({ path: "/" });
-      console.log("home");
-    },
+
     managePayments() {
-      this.$router.push({ path: "ReviewPaymentRequests" });
-      console.log("ReviewPaymentRequests");
+      this.$router.push({ path: "ManagePayments" });
+      console.log("ManagePayments");
+    },
+    requestPayment() {
+      this.$router.push({ path: "RequestPayment" });
+      console.log("RequestPayment");
     },
   },
 };

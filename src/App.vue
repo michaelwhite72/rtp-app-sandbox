@@ -31,54 +31,14 @@
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
     </v-app-bar>
-    <!-- <v-img
-      lazy-src="./images/large-Payments_Banner-–-2.png"
-      max-height="300"
-      src="./images/large-Payments_Banner-–-2.png"
-    ></v-img> -->
 
     <v-main>
       <router-view />
     </v-main>
-    <!-- <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-sm-6 mb-4">
-          <h3 class="my-sm-3 mb-2">
-            <span class="fa mr-2 fa-mobile"></span> Mobile Apps
-          </h3>
-          <p class="mb-sm-4">
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.
-          </p>
-        </div>
-        <div class="col-lg-3 col-sm-6 mb-4">
-          <h3 class="my-sm-3 mb-2">
-            <span class="fa mr-2 fa-shield"></span> Security Tips
-          </h3>
-          <p class="mb-sm-4">
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.
-          </p>
-        </div>
-        <div class="col-lg-3 col-sm-6 mb-4">
-          <h3 class="my-sm-3 mb-2">
-            <span class="fa mr-2 fa-globe"></span> Various Branches
-          </h3>
-          <p class="mb-sm-4">
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.
-          </p>
-        </div>
-        <div class="col-lg-3 col-sm-6 mb-4">
-          <h3 class="my-sm-3 mb-2">
-            <span class="fa mr-2 fa-phone"></span> 24/7 Support
-          </h3>
-          <p class="mb-4">
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.
-          </p>
-        </div>
-      </div>
-    </div> -->
+
     <v-footer color="purple" padless>
       <v-row justify="center" no-gutters>
-        <v-btn @click="homePage()" color="white" text rounded class="my-2">
+        <v-btn color="white" text rounded class="my-2">
           Home
         </v-btn>
         <v-btn
@@ -107,18 +67,18 @@ export default {
     links: ["About Us", "Team", "Services", "Blog", "Contact Us"],
   }),
   methods: {
-    homePage() {
-      this.$router.push({ path: "/" });
-      console.log("home");
-    },
-    vendorPage() {
-      this.$router.push({ path: "B2B" });
-      console.log("b2b");
-    },
-    customerPage() {
-      this.$router.push({ path: "C2B" });
-      console.log("c2b");
-    },
+    // homePage() {
+    //   this.$router.push({ path: "/" });
+    //   console.log("home");
+    // },
+    // vendorPage() {
+    //   this.$router.push({ path: "B2B" });
+    //   console.log("b2b");
+    // },
+    // customerPage() {
+    //   this.$router.push({ path: "C2B" });
+    //   console.log("c2b");
+    // },
   },
 };
 </script>

@@ -18,24 +18,18 @@
         Home
       </v-btn>
 
-      <v-btn
-        v-on:click="managePayments()"
-        color="white"
-        text
-        rounded
-        class="my-2"
-      >
+      <v-btn color="blue" text rounded class="my-2">
         Manage Payments
       </v-btn>
 
       <v-btn
-        v-on:click="customerPage()"
-        color="white"
+        v-on:click="requestPayment()"
+        color="green"
         text
         rounded
         class="my-2"
       >
-        Customer Pay
+        Request Payment
       </v-btn>
 
       <v-btn icon>
@@ -52,6 +46,8 @@
     <div class="home">
       <h1>{{ message }}</h1>
     </div>
+
+    <v-container fluid> </v-container>
 
     <!-- Creditor-->
     <v-container fluid>
@@ -120,9 +116,9 @@ export default {
       this.$router.push({ path: "/" });
       console.log("home");
     },
-    managePayments() {
-      this.$router.push({ path: "ReviewPaymentRequests" });
-      console.log("ReviewPaymentRequests");
+    requestPayment() {
+      this.$router.push({ path: "RequestPayment" });
+      console.log("RequestPayment");
     },
     newPayment() {
       this.$router.go();

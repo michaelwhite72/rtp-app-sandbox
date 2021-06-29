@@ -20,7 +20,7 @@
 
       <v-btn
         v-on:click="managePayments()"
-        color="white"
+        color="red"
         text
         rounded
         class="my-2"
@@ -28,14 +28,8 @@
         Manage Payments
       </v-btn>
 
-      <v-btn
-        v-on:click="customerPage()"
-        color="white"
-        text
-        rounded
-        class="my-2"
-      >
-        Customer Pay
+      <v-btn color="green darken-4" text rounded class="my-2">
+        Request Payment
       </v-btn>
 
       <v-btn icon>
@@ -51,6 +45,8 @@
     <div class="home">
       <h1>{{ message }}</h1>
     </div>
+
+    <v-container fluid> </v-container>
 
     <!-- FIRST ROW OF ENTRIES -->
     <v-container fluid>
@@ -68,11 +64,12 @@
         </v-col>
         <!-- Payee Name -->
         <v-col class="d-flex" cols="4" sm="3">
-          <v-text-field
-            v-model="customerID"
-            label="Customer ID Number"
+          <v-select
+            v-model="customerName"
+            :items="customers"
+            label="Customer Name"
             outlined
-          ></v-text-field>
+          ></v-select>
         </v-col>
         <!-- Account Number -->
         <v-col class="d-flex" cols="4" sm="3">
@@ -148,14 +145,14 @@
               <template v-slot:default="dialog">
                 <!-- VERIFICATION POP-UP -->
                 <v-card>
-                  <v-toolbar color="pink accent-1">
+                  <v-toolbar color="light-green ">
                     <h2>TransactionID: {{ paymentInformationId }}</h2>
                   </v-toolbar>
                   <v-card-text>
                     <div>
                       <br />
-                      <h2>Customer ID:</h2>
-                      <p>{{ customerID }}</p>
+                      <h2>Customer Name:</h2>
+                      <p>{{ customerName }}</p>
                       <br />
                       <h2>Date:</h2>
                       <p>{{ executionDate }}</p>
@@ -174,7 +171,9 @@
                       <p>Price: $5 per pound</p>
                       <br />
                       <br />
-                      <h1>Total Sale: $ {{ salesTotal.toFixed(2) }}</h1>
+                      <h1>
+                        Total Payment Requested: $ {{ salesTotal.toFixed(2) }}
+                      </h1>
                     </div>
                   </v-card-text>
                   <!-- POP-UP BUTTONS -->
@@ -192,7 +191,7 @@
                       depressed
                       color="green"
                     >
-                      Make Payment
+                      Send Payment Request
                     </v-btn>
                   </v-card-actions>
                 </v-card>
@@ -223,24 +222,38 @@ import moment from "moment";
 export default {
   data: function() {
     return {
-      message: "Welcome to Send Request for Payment!",
+      message: "Send Request for Payment ",
       today: moment().format("YYYY-MM-DD"),
       paymentInformationId: Math.floor(Math.random() * 100000000000),
       tuna: { label: "Tuna", val: 0, color: "blue" },
       lobster: { label: "Lobster", val: 0, color: "red" },
       crab: { label: "Crab", val: 0, color: "orange" },
-      customerID: "",
+      customerName: "",
       executionDate: "",
       tunaTotal: "",
       lobsterTotal: "",
       crabTotal: "",
       salesTotal: "",
+      customers: [
+        "Lobster Shack",
+        "Mike's Fish Joint",
+        "Dan's Catch of the Day",
+      ],
     };
   },
   created: function() {
     return (this.executionDate = moment().format("YYYY-MM-DD"));
   },
   methods: {
+    homePage() {
+      this.$router.push({ path: "/" });
+      console.log("home");
+    },
+    managePayments() {
+      this.$router.push({ path: "ManagePayments" });
+      console.log("ManagePayments");
+    },
+
     newPayment() {
       this.$router.go();
     },
